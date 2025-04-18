@@ -1,0 +1,183 @@
+<%- include("navbar.ejs")%>
+
+
+<form action="/admin/save_information" method="post" enctype="multipart/form-data">
+    <div class="container bg-dark text-white p-4">
+        <h1>Introduction Page</h1>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                Enter Name
+                <input type="text" name="user_name"   value="<%-intro.user_name%>" id="" class="form-control">
+            </div>
+            <div class="col-md-2 mb-3">
+                Enter Tagline
+                <input type="text" name="user_tagline"   value="<%-intro.user_tagline%>" id="" class="form-control">
+            </div>
+            <div class="col-md-2 mb-3">
+                Select Photo
+                <input type="file" name="user_photo"   id="" accept="image/*" class="form-control">
+            </div>
+            <div class="col-md-2 mb-3">
+             
+                <img src="/<%-intro.user_photo%>" width="100%" alt="">
+            </div>
+            <div class="col-md-3 mb-3">
+                Enter Mobile
+                <input type="text" name="user_mobile"   value="<%-intro.user_mobile%>" id="" class="form-control">
+            </div>
+            <div class="col-md-4 mb-3">
+                Enter Email
+                <input type="text" name="user_email"   value="<%-intro.user_email%>" id="" class="form-control">
+            </div>
+            <div class="col-md-4 mb-3">
+                Enter LinkedIn Link
+                <input type="url" name="linkedin"   value="<%-intro.linkedin%>" id="" class="form-control">
+            </div>
+            <div class="col-md-4 mb-3">
+                Enter Instagram Link
+                <input type="url" name="instagram_link"   value="<%-intro.instagram_link%>" id="" class="form-control">
+            </div>
+            <div class="col-md-4 mb-3">
+                Enter Facebook Link
+                <input type="url" name="facebook_link"   value="<%-intro.facebook_link%>" id="" class="form-control">
+            </div>
+            <div class="col-md-4 mb-3">
+                Enter Twitter Link
+                <input type="text" name="twitter_link"   value="<%-intro.twitter_link%>" id="" class="form-control">
+            </div>
+            <div class="col-md-3 mb-3">
+                Resume PDF
+                <input type="file" name="resume" class="form-control" accept=".pdf">
+            </div>
+            <div class="col-md-2 mb-3">
+               <a href="/<%-intro.resume%>">
+                <button type="button" class="btn btn-primary btn-sm">Resume</button>
+               </a>
+            </div>
+            <div class="col-md-12 mb-3">
+                About In Brief
+                <textarea name="about_details"   id="" class="form-control"><%-intro.about_details%></textarea>
+            </div>
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary ">Submit</button>
+            </div>
+        </div>
+
+    </div>
+    
+</form>
+
+<%- include("footer.ejs")%>
+
+
+<style>
+    /* Double background gradient animation */
+ @keyframes gradientBackground {
+     0% { background-position: 0% 50%; }
+     50% { background-position: 100% 50%; }
+     100% { background-position: 0% 50%; }
+ }
+ 
+ body {
+     margin: 0;
+     font-family: Arial, sans-serif;
+     background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+     background-size: 200% 200%;
+     animation: gradientBackground 10s ease infinite;
+     color: #fff;
+ }
+ 
+ /* Dual animated overlay */
+ .container::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+     animation: floatEffect 6s ease-in-out infinite;
+     pointer-events: none;
+     border-radius: 15px;
+ }
+ 
+ /* Float effect for the radial gradient */
+ @keyframes floatEffect {
+     0% { transform: translateX(0); }
+     50% { transform: translateX(20px); }
+     100% { transform: translateX(0); }
+ }
+ 
+ /* Container styling with shadow and hover effect */
+ .container {
+     position: relative;
+     border-radius: 15px;
+     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+     transition: transform 0.3s;
+ }
+ 
+ .container:hover {
+     transform: scale(1.02);
+ }
+ 
+ /* Form styling */
+ input[type="text"], input[type="number"] {
+     background-color: rgba(255, 255, 255, 0.1);
+     color: #fff;
+     border: none;
+     border-bottom: 2px solid #f9f9f9;
+     transition: border-color 0.3s, box-shadow 0.3s;
+ }
+ 
+ input[type="text"]:focus, input[type="number"]:focus {
+     border-color: #6a82fb;
+     box-shadow: 0 0 8px rgba(106, 130, 251, 0.8);
+     outline: none;
+ }
+ 
+ /* Button styling */
+ button.btn-primary {
+     background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+     border: none;
+     transition: all 0.3s;
+     color: white;
+ }
+ 
+ button.btn-primary:hover {
+     background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+     transform: scale(1.1);
+     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+ }
+ 
+ /* Table styling */
+ table.table {
+     animation: fadeIn 1.5s ease-in-out;
+ }
+ 
+ table th, table td {
+     text-align: center;
+     padding: 8px;
+     background: rgba(0, 0, 0, 0.3);
+ }
+ 
+ table th {
+     background: #6a82fb;
+ }
+ 
+ table tr:nth-child(even) {
+     background-color: rgba(255, 255, 255, 0.1);
+ }
+ 
+ table tr:hover {
+     background-color: #fc5c7d;
+ }
+ 
+ /* Fade in animation */
+ @keyframes fadeIn {
+     from { opacity: 0; }
+     to { opacity: 1; }
+ }
+ 
+ 
+ </style>

@@ -1,0 +1,158 @@
+<%-include("navbar.ejs")%>
+
+<form action="/admin/project" method="post" enctype="multipart/form-data">
+
+<div class="container bg-dark  text-white mt-4 p-5">
+    <div class="row">
+       
+            <div class="col-md-6">
+                Upload Image
+                <input type="file" name="upload_image" id="" class="form-control" accept="image/*">
+            </div>
+            <div class="col-md-4">
+                Enter Project information
+              <textarea name="project_information" id=""></textarea>
+            </div>
+            <div class="col-md-2">
+                <br>
+                <button class="btn btn-primary btn-sm">Submit</button>
+            </div>
+    </div>
+
+   <table class="table table-bordered table-sm table-dark text-light">
+        <tr>
+            <th>Action</th>
+            <th>Sr.No</th>
+            <th>Upload Image</th>
+            <th>Enter Project information</th>
+        </tr>
+
+        <% project.map((row,i)=>{ %>
+
+          <tr>
+            <td><a href="/admin/edit/<%-row.project_id%>"><button type="button">Edit</button></a></td>
+            <td><%- i + 1 %></td>
+            <td><img src="/<%-row.upload_image%>" width="100px" alt=""></td>
+            <td><%-row.project_information%></td>
+          </tr>
+            <% }) %>
+   </table>
+
+</div>
+</form>
+
+
+
+<%-include("footer.ejs")%>
+
+
+<style>
+  /* Double background gradient animation */
+@keyframes gradientBackground {
+   0% { background-position: 0% 50%; }
+   50% { background-position: 100% 50%; }
+   100% { background-position: 0% 50%; }
+}
+
+body {
+   margin: 0;
+   font-family: Arial, sans-serif;
+   background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+   background-size: 200% 200%;
+   animation: gradientBackground 10s ease infinite;
+   color: #fff;
+}
+
+/* Dual animated overlay */
+.container::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+   animation: floatEffect 6s ease-in-out infinite;
+   pointer-events: none;
+   border-radius: 15px;
+}
+
+/* Float effect for the radial gradient */
+@keyframes floatEffect {
+   0% { transform: translateX(0); }
+   50% { transform: translateX(20px); }
+   100% { transform: translateX(0); }
+}
+
+/* Container styling with shadow and hover effect */
+.container {
+   position: relative;
+   border-radius: 15px;
+   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+   transition: transform 0.3s;
+}
+
+.container:hover {
+   transform: scale(1.02);
+}
+
+/* Form styling */
+input[type="text"], input[type="number"] {
+   background-color: rgba(255, 255, 255, 0.1);
+   color: #fff;
+   border: none;
+   border-bottom: 2px solid #f9f9f9;
+   transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+   border-color: #6a82fb;
+   box-shadow: 0 0 8px rgba(106, 130, 251, 0.8);
+   outline: none;
+}
+
+/* Button styling */
+button.btn-primary {
+   background: linear-gradient(135deg, #6a82fb, #fc5c7d);
+   border: none;
+   transition: all 0.3s;
+   color: white;
+}
+
+button.btn-primary:hover {
+   background: linear-gradient(135deg, #fc5c7d, #6a82fb);
+   transform: scale(1.1);
+   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Table styling */
+table.table {
+   animation: fadeIn 1.5s ease-in-out;
+}
+
+table th, table td {
+   text-align: center;
+   padding: 8px;
+   background: rgba(0, 0, 0, 0.3);
+}
+
+table th {
+   background: #6a82fb;
+}
+
+table tr:nth-child(even) {
+   background-color: rgba(255, 255, 255, 0.1);
+}
+
+table tr:hover {
+   background-color: #fc5c7d;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+   from { opacity: 0; }
+   to { opacity: 1; }
+}
+
+
+</style>

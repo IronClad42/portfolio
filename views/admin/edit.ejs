@@ -1,0 +1,23 @@
+<%-include("navbar.ejs")%>
+
+<h1>Jay Shree Ram</h1>
+
+
+<form action="/save_contact_details/<%info.Project_id%>" method="post" enctype="multipart/form-data">
+
+    <div class="container bg-dark  text-white mt-4 p-5">
+        <div class="row">
+            <div class="col-md-6">
+                Upload Image
+                <input type="file" name="upload_image" id="" class="form-control" accept="image/*">
+            </div>
+            <div class="col-md-4">
+                Enter Project information
+              <textarea name="project_information" id="" ><%-info.project_information%></textarea>
+            </div>
+            <div class="col-md-2">
+                <br>
+                <button class="btn btn-primary btn-sm">Submit</button>
+            </div>
+        </div>
+    </div>
